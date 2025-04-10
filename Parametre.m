@@ -5,14 +5,14 @@ Ls   = 8e-5;     % Stator self-inductance per phase, Ls  [H]
 Ms   = 1e-5;     % Stator mutual inductance, Ms          [H]
 psim= 0.0175;   % Maximum permanent magnet flux linkage [Wb]
 Jm   = 0.00069;   % Rotor inertia                         [Kg*m^2]
-Vdc  = 24;       % DC link voltage                       [V]
+Vdc  = 12;       % DC link voltage                       [V]
 Ld = 0.664 ; % stator d-axis inductance [mH] 
 Lq = 0.664 ; % stator q-axis inductance [mH] 
 r_bras = 196 ; % Rapport de réduction moteur bras 
 r_verin = 30 ; % Rapport de réduction moteur vérin + rotation     
 %%test bruchless
-rpm__max = 60000 ; % vitesse de rotation max [tr/min]
-Vref = 12 ; %tension de reférence [V]
+rpm__max = 10000 ; % vitesse de rotation max [tr/min]
+Vref = 18 ; %tension de reférence [V]
 
 Un = 9 ; % tension nominal [V]
 C_ref = 37e-3; 
@@ -165,7 +165,7 @@ f_mf = 0.001 ; % Coeff de frottement visqeux [N*s/rad] | X
 
 % Liaison bras
 
-f_bras=0.005 ; %[N.m.s/rad]
+f_bras=0.00005 ; %[N.m.s/rad]
 k_bras = 0.01 ; %[N*m/(deg)]
 k_verin = 1 ; %[N*m/(deg)]
 
@@ -173,9 +173,9 @@ k_verin = 1 ; %[N*m/(deg)]
 %Paramètre contact cana/bras
 cana_fs = 0.7;
 cana_fd = 0.5;
-damp =1e3 ; %frottement fluide contact avec cana [N.m/(deg/s)]
-stiff = 10000 ; %raideur contact avec cana [N.m/deg]
-trw =0.05 ; %transition region width [mm]
+damp =1e8 ; %frottement fluide contact avec cana [N.m/(deg/s)]
+stiff = 1000000 ; %raideur contact avec cana [N.m/deg]
+trw =0.1 ; %transition region width [mm]
 
 %Paramètre contact cana/scc
 scc_fs = 0.3;
@@ -219,8 +219,8 @@ angle_tot= angle_0-angle_couronne;
 cana = load('canalisation_data.mat');
  % Vérifiez que les données sont bien chargées
 pipeline = cana.tableCana ; 
-R_cana = 0.125 ;
-L_module = 200 ;
+R_cana = 0.2 ;
+
 assignin('base', 'pipeline', pipeline);
 [N,~]=size(pipeline);
 liste_norm_AB = zeros(N,1);
@@ -231,9 +231,9 @@ end
 longueur_cana=max(liste_norm_AB);%[m]
 %longueur_cana =24 ;
 assignin('base', 'longueur_cana', longueur_cana);
-dim_cana = [0.125/tan(pi/3) 0.01 longueur_cana];
+dim_cana = [R_cana/tan(pi/3) 0.01 longueur_cana];
 assignin('base', 'dim_cana', dim_cana);
-dim_cana_v =[0.125/tan(pi/3) 0.01 0.32];
+
 
 % Vitese fluide dans canalisation
 Vf = 0.3 ; 

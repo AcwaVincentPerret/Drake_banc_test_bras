@@ -1,0 +1,1 @@
+Limiteur de courant opérationnel mais efforts entre patin trop important par rapport aux valeurs réelles
