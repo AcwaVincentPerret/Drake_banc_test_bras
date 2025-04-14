@@ -1,10 +1,10 @@
 function rho = loi_ES(alpha)
 
 R=40.4/1000;
-agrandissement = 1.4;
+agrandissement = 1.9;
 L1=agrandissement*30/1000;
 L2=agrandissement*28/1000;
-L3 = 24.5/1000;
+L3 = agrandissement*24.5/1000;
 d = 12/1000;
 alpha_0 = 42*pi/180;
 gamma = 155*pi/180;
