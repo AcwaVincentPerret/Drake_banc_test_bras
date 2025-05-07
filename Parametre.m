@@ -219,7 +219,7 @@ angle_tot= angle_0-angle_couronne;
 cana = load('canalisation_data.mat');
  % Vérifiez que les données sont bien chargées
 pipeline = cana.tableCana ; 
-R_cana = 0.175 ;
+R_cana = 0.2 ;
 
 assignin('base', 'pipeline', pipeline);
 [N,~]=size(pipeline);
